@@ -115,10 +115,10 @@ export const certifications: Certification[] = [
 ];
 
 export const contactInfo: ContactInfo = {
-  email: 'nitesh@example.com',
-  linkedin: 'https://linkedin.com/in/nitesh',
-  github: 'https://github.com/nitesh',
-  twitter: 'https://twitter.com/nitesh',
+  email: 'narwalnitesh14@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/nitesh-narwal-b896a218b/#main-content',
+  github: 'https://github.com/mr-narwal',
+  twitter: 'https://x.com/narwalnitesh14',
   resume: '/resume/Nitesh_Resume.pdf',
 };
 
@@ -149,7 +149,7 @@ export const siteMetadata = {
   author: 'Nitesh',
   siteUrl: 'https://nitesh.dev',
   ogImage: '/images/og-image.png',
-  twitterHandle: '@nitesh',
+  twitterHandle: 'https://x.com/narwalnitesh14',
 };
 
 export const heroData = {
@@ -175,10 +175,10 @@ My approach is engineering-first: understanding the problem deeply before writin
     'Security-conscious engineering',
   ],
   timeline: [
-    { year: '2020', event: 'Started CS degree, fell in love with backend systems' },
-    { year: '2022', event: 'Built first microservices project' },
-    { year: '2023', event: 'Started freelancing, worked with real clients' },
-    { year: '2024', event: 'AWS Certified Developer, internship at TechCorp' },
+    { year: '2022', event: 'Started CS degree, fell in love with backend systems' },
+    { year: '2023', event: 'Built first microservices project' },
+    { year: '2024', event: 'Started freelancing, worked with real clients' },
+    { year: '2025', event: 'AWS Certified Developer, internship at TechCorp' },
     { year: 'Now', event: 'Ready for full-time backend role' },
   ],
 };
