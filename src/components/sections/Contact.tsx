@@ -11,6 +11,7 @@ import {
   CheckCircle,
   AlertCircle,
   Loader2,
+  GamepadIcon,
 } from 'lucide-react';
 import { contactInfo } from '@/data/content';
 import { staggerContainer, staggerItem, viewportConfig } from '@/lib/animations';
@@ -96,13 +97,13 @@ export default function Contact() {
       icon: Github,
       label: 'GitHub',
       href: contactInfo.github,
-      value: 'github.com/nitesh',
+      value: 'https://github.com/mr-narwal',
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
       href: contactInfo.linkedin,
-      value: 'linkedin.com/in/nitesh',
+      value: 'https://www.linkedin.com/in/nitesh-narwal-b896a218b/#main-content',
     },
   ];
 
