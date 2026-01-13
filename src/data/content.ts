@@ -102,24 +102,93 @@ export const experiences: Experience[] = [
 
 export const certifications: Certification[] = [
   {
-    id: 'aws-developer-associate',
-    name: 'AWS Certified Developer – Associate',
-    issuer: 'Amazon Web Services',
-    issueDate: '2024-03',
-    expiryDate: '2027-03',
-    credentialId: 'DVA-C02-XXXXXX',
-    verificationUrl: 'https://www.credly.com/badges/xxxxx',
-    badge: '/images/badges/aws-developer-associate.png',
+    id: 'oracle-certified-professional',
+    name: 'Oracle Cloud Infrastructure – Developer Professional ',
+    issuer: 'Oracle',
+    issueDate: '2025-10',
+    credentialId: '103034688OCID25CP',
+    verificationUrl: 'https://drive.google.com/file/d/1fz8ay2-0tH7S3j2cvUzh_gDrM0pr_aBC/view?usp=drive_link',
+    badge: '/images/projects/badge_developer-removebg-bg.png',
     featured: true,
+    certificationType: 'verified',
+    },
+  // {
+  //   id: 'aws-cloud-practitioner',
+  //   name: 'AWS Certified Cloud Practitioner',
+  //   issuer: 'Amazon Web Services',
+  //   issueDate: '2024-03',
+  //   expiryDate: '2027-03',
+  //   credentialId: 'CLF-C02-XXXXXX',
+  //   verificationUrl: 'https://www.credly.com/badges/xxxxx',
+  //   badge: '/images/badges/aws-cloud-practitioner.png',
+  //   featured: false,
+  //   certificationType: 'verified',
+  //   skills: ['AWS Core Services', 'Cloud Concepts', 'Security', 'Pricing'],
+  // },
+  // Udemy Course Certificates
+  // {
+  //   id: 'udemy-spring-boot-microservices',
+  //   name: 'Master Microservices with Spring Boot and Spring Cloud',
+  //   issuer: 'Udemy',
+  //   issueDate: '2024-01',
+  //   credentialId: 'UC-XXXXX-1',
+  //   verificationUrl: 'https://www.udemy.com/certificate/UC-XXXXX/',
+  //   featured: false,
+  //   certificationType: 'course',
+  //   skills: ['Spring Boot', 'Microservices', 'Spring Cloud', 'Docker', 'Kubernetes'],
+  // },
+  {
+    id: 'udemy-aws-developer',
+    name: 'Ultimate AWS Certified Developer Associate',
+    issuer: 'Udemy',
+    issueDate: '2025-01',
+    credentialId: '-a2abafd9-2eae-4791-a8cc-cea7992acf6c',
+    verificationUrl: 'https://drive.google.com/file/d/1HwEdpgJ74MLHQbJpETOLYiT165ut6Gfu/view?usp=drive_link',
+    featured: false,
+    certificationType: 'course',
+    skills: ['AWS Lambda', 'DynamoDB', 'API Gateway', 'S3', 'CloudFormation', 'ECS'],
   },
+  // {
+  //   id: 'udemy-docker-kubernetes',
+  //   name: 'Docker and Kubernetes: The Complete Guide',
+  //   issuer: 'Udemy',
+  //   issueDate: '2023-11',
+  //   credentialId: 'UC-XXXXX-3',
+  //   verificationUrl: 'https://www.udemy.com/certificate/UC-XXXXX/',
+  //   featured: false,
+  //   certificationType: 'course',
+  //   skills: ['Docker', 'Kubernetes', 'Container Orchestration', 'CI/CD'],
+  // },
+  // {
+  //   id: 'udemy-system-design',
+  //   name: 'System Design Interview: An Insider\'s Guide',
+  //   issuer: 'Udemy',
+  //   issueDate: '2024-04',
+  //   credentialId: 'UC-XXXXX-4',
+  //   verificationUrl: 'https://www.udemy.com/certificate/UC-XXXXX/',
+  //   featured: false,
+  //   certificationType: 'course',
+  //   skills: ['System Design', 'Scalability', 'Distributed Systems', 'Load Balancing'],
+  // },
+  // {
+  //   id: 'udemy-java-masterclass',
+  //   name: 'Java Programming Masterclass covering Java 17',
+  //   issuer: 'Udemy',
+  //   issueDate: '2023-08',
+  //   credentialId: 'UC-XXXXX-5',
+  //   verificationUrl: 'https://www.udemy.com/certificate/UC-XXXXX/',
+  //   featured: false,
+  //   certificationType: 'course',
+  //   skills: ['Java 17', 'OOP', 'Collections', 'Lambdas', 'Streams'],
+  // },
 ];
 
 export const contactInfo: ContactInfo = {
   email: 'narwalnitesh14@gmail.com',
-  linkedin: 'https://www.linkedin.com/in/nitesh-narwal-b896a218b/#main-content',
-  github: 'https://github.com/mr-narwal',
+  linkedin: 'https://www.linkedin.com/in/nitesh-narwal-b896a218b/',
+  github: 'https://github.com/nitesh-narwal',
   twitter: 'https://x.com/narwalnitesh14',
-  resume: '/resume/Nitesh_Resume.pdf',
+  resume: 'https://drive.google.com/file/d/1Y8a-jTTzHYvQ8cPE_0gaf2I0EKj4Wr8Q/view?usp=drivesdk',
 };
 
 export const navItems: NavItem[] = [
@@ -127,14 +196,14 @@ export const navItems: NavItem[] = [
   { id: 'skills', label: 'Skills', href: '#skills' },
   { id: 'projects', label: 'Projects', href: '#projects' },
   { id: 'system-design', label: 'Architecture', href: '#system-design' },
-  { id: 'experience', label: 'Experience', href: '#experience' },
+  { id: 'certifications', label: 'Certifications', href: '#certifications' },
   { id: 'contact', label: 'Contact', href: '#contact' },
 ];
 
 export const siteMetadata = {
-  title: 'Nitesh | Backend Developer',
+  title: 'Nitesh | Backend & Cloud Developer',
   description:
-    'Backend developer building scalable systems with Java, Spring Boot, and AWS. AWS Certified Developer focused on cloud-native architecture and system design.',
+    'Backend developer building scalable cloud-native systems with Java, Spring Boot, and AWS. Oracle Certified Java Developer focused on microservices and cloud architecture.',
   keywords: [
     'Backend Developer',
     'Java Developer',
@@ -145,6 +214,7 @@ export const siteMetadata = {
     'System Design',
     'REST API',
     'Software Engineer',
+    'Cloud Engineer',
   ],
   author: 'Nitesh',
   siteUrl: 'https://nitesh.dev',
@@ -153,9 +223,9 @@ export const siteMetadata = {
 };
 
 export const heroData = {
-  headline: 'Backend developer building scalable systems with Java, Spring Boot, and AWS.',
+  headline: 'Backend developer specializing in AWS cloud and Spring Boot microservices.',
   subheadline:
-    'I design reliable, cost-efficient backend architectures that handle real-world traffic. AWS Certified Developer focused on performance and security.',
+    'I build scalable, cloud-native applications with a focus on reliability and performance. Oracle Certified Java Developer passionate about distributed systems and modern cloud architecture.',
   techBadges: [
     { name: 'Java', icon: 'Coffee' },
     { name: 'Spring Boot', icon: 'Leaf' },
@@ -165,20 +235,20 @@ export const heroData = {
 };
 
 export const aboutData = {
-  summary: `Backend engineer with hands-on experience building production-grade systems using Java and Spring Boot. I specialize in designing cloud-native applications on AWS that prioritize scalability, reliability, and cost-efficiency.
+  summary: `Backend engineer passionate about cloud-native development on AWS and building scalable microservices with Spring Boot. I specialize in designing reliable, cost-efficient systems that handle real-world traffic while following best practices in security and performance.
 
-My approach is engineering-first: understanding the problem deeply before writing code, making deliberate architectural decisions with clear trade-offs, and building systems that are maintainable in the long term.`,
+My approach combines solid backend fundamentals with modern cloud architecture. I enjoy solving complex distributed systems problems and continuously learning new technologies in the AWS ecosystem.`,
   highlights: [
-    'Backend architecture design',
     'Cloud-native development on AWS',
-    'Performance optimization',
-    'Security-conscious engineering',
+    'Microservices with Spring Boot',
+    'System design & architecture',
+    'API development & security',
   ],
   timeline: [
-    { year: '2022', event: 'Started CS degree, fell in love with backend systems' },
-    { year: '2023', event: 'Built first microservices project' },
-    { year: '2024', event: 'Started freelancing, worked with real clients' },
-    { year: '2025', event: 'AWS Certified Developer, internship at TechCorp' },
-    { year: 'Now', event: 'Ready for full-time backend role' },
+    { year: '2022', event: 'Started CS degree' },
+    { year: '2023', event: 'discovered passion for backend systems' },
+    { year: '2024', event: 'Deep dive into Spring Boot and AWS service' },
+    { year: '2025', event: 'Oracle Certified Cloud Developer' },
+    { year: 'Now', event: 'Ready for backend/cloud engineering role' },
   ],
 };

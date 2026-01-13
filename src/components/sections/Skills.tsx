@@ -11,9 +11,59 @@ import {
   ChevronDown,
   ChevronRight,
 } from 'lucide-react';
+// Import technology-specific icons from react-icons
+import {
+  SiSpring,
+  SiSpringboot,
+  SiSpringsecurity,
+  SiHibernate,
+  SiApachekafka,
+  SiPostgresql,
+  SiRedis,
+  SiMongodb,
+  SiElasticsearch,
+  SiDocker,
+  SiGit,
+  SiGithubactions,
+  SiLinux,
+  SiTerraform,
+  SiAmazondynamodb,
+  SiAmazons3,
+} from 'react-icons/si';
+import { FaJava, FaAws, FaDocker, FaNetworkWired, FaLock, FaDatabase, FaCogs, FaCloud, FaServer } from 'react-icons/fa';
 import { skillCategories } from '@/data/skills';
 import { staggerContainer, staggerItem, viewportConfig } from '@/lib/animations';
 import { cn } from '@/lib/utils';
+
+// Icon mapping for individual skills
+const skillIcons: Record<string, React.ComponentType<{ className?: string; size?: number }>> = {
+  'Java 17+': FaJava,
+  'Spring Boot': SiSpringboot,
+  'Spring Security': SiSpringsecurity,
+  'Hibernate/JPA': SiHibernate,
+  'REST API Design': FaServer,
+  'Microservices': FaCogs,
+  'AWS Lambda': FaAws,
+  'Amazon API Gateway': FaAws,
+  'Amazon S3': SiAmazons3,
+  'Amazon DynamoDB': SiAmazondynamodb,
+  'Amazon RDS': FaDatabase,
+  'Amazon SQS/SNS': FaAws,
+  'AWS IAM': FaLock,
+  'PostgreSQL': SiPostgresql,
+  'Redis': SiRedis,
+  'MongoDB': SiMongodb,
+  'Elasticsearch': SiElasticsearch,
+  'Docker': SiDocker,
+  'Git': SiGit,
+  'CI/CD (GitHub Actions)': SiGithubactions,
+  'Linux': SiLinux,
+  'Distributed Systems': FaNetworkWired,
+  'Caching Strategies': FaDatabase,
+  'Message Queues': SiApachekafka,
+  'Load Balancing': FaNetworkWired,
+  'API Security': FaLock,
+};
 
 const categoryIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   backend: Server,
@@ -138,17 +188,34 @@ export default function Skills() {
                                         isSkillExpanded && 'rotate-90'
                                       )}
                                     />
+                                    {/* Skill Icon */}
+                                    {skillIcons[skill.name] ? (
+                                      (() => {
+                                        const SkillIcon = skillIcons[skill.name];
+                                        return (
+                                          <div className="w-8 h-8 rounded-lg bg-glass border border-glass-border flex items-center justify-center flex-shrink-0">
+                                            <SkillIcon className="w-4 h-4 text-primary" />
+                                          </div>
+                                        );
+                                      })()
+                                    ) : (
+                                      <div className="w-8 h-8 rounded-lg bg-glass border border-glass-border flex items-center justify-center flex-shrink-0">
+                                        <span className="text-xs font-bold text-primary">
+                                          {skill.name.charAt(0)}
+                                        </span>
+                                      </div>
+                                    )}
                                     <span className="font-medium text-foreground">
                                       {skill.name}
                                     </span>
                                     <span
                                       className={cn(
                                         'text-2xs px-2 py-0.5 rounded-full font-medium uppercase tracking-wider',
-                                        skill.level === 'expert' &&
+                                        skill.level === '' &&
                                           'bg-primary/10 text-primary',
-                                        skill.level === 'advanced' &&
+                                        skill.level === '' &&
                                           'bg-accent/10 text-accent',
-                                        skill.level === 'intermediate' &&
+                                        skill.level === '' &&
                                           'bg-accent-secondary/10 text-accent-secondary'
                                       )}
                                     >

@@ -10,7 +10,6 @@ import Skills from '@/components/sections/Skills';
 import Projects from '@/components/sections/Projects';
 import SystemDesign from '@/components/sections/SystemDesign';
 import Certifications from '@/components/sections/Certifications';
-import Experience from '@/components/sections/Experience';
 import Contact from '@/components/sections/Contact';
 
 export default function Home() {
@@ -49,7 +48,6 @@ export default function Home() {
         <Projects />
         <SystemDesign />
         <Certifications />
-        <Experience />
         <Contact />
       </main>
 

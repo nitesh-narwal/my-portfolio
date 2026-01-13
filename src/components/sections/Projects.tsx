@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ExternalLink,
@@ -15,6 +16,7 @@ import {
   Cloud,
   Settings,
   Wrench,
+  ImageIcon,
 } from 'lucide-react';
 import { featuredProjects } from '@/data/projects';
 import { staggerContainer, staggerItem, viewportConfig } from '@/lib/animations';
@@ -32,6 +34,7 @@ const categoryIcons: Record<string, React.ComponentType<{ className?: string }>>
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   const groupedTechStack = project.techStack.reduce(
     (acc, tech) => {
@@ -47,6 +50,31 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       variants={staggerItem}
       className="glass-card-hover group"
     >
+      {/* Project Image */}
+      {project.image && (
+        <div className="relative w-full h-40 md:h-128 overflow-hidden rounded-t-xl border-b border-glass-border">
+          {!imageError ? (
+            <Image
+              src={project.image}
+              alt={`${project.title} preview`}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              onError={() => setImageError(true)}
+              // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          ) : (
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+              <div className="text-center">
+                <ImageIcon className="w-12 h-12 text-foreground-muted mx-auto mb-2" />
+                <p className="text-sm text-foreground-muted">{project.title}</p>
+              </div>
+            </div>
+          )}
+          {/* Gradient overlay */}
+          {/* <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" /> */}
+        </div>
+      )}
+
       {/* Main Card Content */}
       <div className="p-6 md:p-8">
         {/* Header */}
@@ -106,7 +134,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         </div>
 
         {/* Key Metrics */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+        {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
           {project.performanceMetrics.slice(0, 4).map((metric) => (
             <div
               key={metric.label}
@@ -116,7 +144,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               <p className="text-2xs text-foreground-muted">{metric.label}</p>
             </div>
           ))}
-        </div>
+        </div> */}
 
         {/* Quick Tech Stack */}
         <div className="flex flex-wrap gap-2 mb-4">

@@ -107,7 +107,7 @@ export default function Header({ onCommandPaletteOpen }: HeaderProps) {
 
               {/* Resume Button */}
               <Link
-                href="/resume/Nitesh_Resume.pdf"
+                href="https://drive.google.com/file/d/1Y8a-jTTzHYvQ8cPE_0gaf2I0EKj4Wr8Q/view?usp=drivesdk"
                 target="_blank"
                 className="hidden sm:flex btn-primary text-sm py-2 px-4"
               >
@@ -175,7 +175,7 @@ export default function Header({ onCommandPaletteOpen }: HeaderProps) {
                   className="w-full btn-primary text-sm justify-center"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Download Resume
+                  Resume
                 </Link>
               </div>
             </motion.div>

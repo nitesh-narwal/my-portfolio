@@ -101,13 +101,13 @@ export default function Hero() {
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
             <a
-              href="/resume/Nitesh_Resume.pdf"
+              href="https://drive.google.com/file/d/1Y8a-jTTzHYvQ8cPE_0gaf2I0EKj4Wr8Q/view?usp=drivesdk"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-secondary group"
             >
               <Download className="w-4 h-4" />
-              Download Resume
+               Resume
             </a>
           </motion.div>
         </motion.div>

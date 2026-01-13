@@ -174,7 +174,7 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       {
         name: 'Java',
-        level: 'expert',
+        level: '',
         usageContext: 'Where you used it',
         whyChosen: 'Why you use it',
         problemSolved: 'What you achieved with it',

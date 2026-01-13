@@ -18,6 +18,7 @@ export interface Project {
   liveUrl?: string;
   featured: boolean;
   category: ProjectCategory;
+  image?: string;
 }
 
 export interface TechStackItem {
@@ -58,7 +59,7 @@ export interface SkillCategory {
 
 export interface Skill {
   name: string;
-  level: 'expert' | 'advanced' | 'intermediate';
+  level: '' | '' | '';
   usageContext: string;
   whyChosen?: string;
   problemSolved?: string;
@@ -101,6 +102,8 @@ export interface Certification {
   verificationUrl: string;
   badge?: string;
   featured: boolean;
+  certificationType: 'verified' | 'course';
+  skills?: string[];
 }
 
 // ============================================

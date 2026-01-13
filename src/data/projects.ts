@@ -2,16 +2,16 @@ import type { Project } from '@/types';
 
 export const projects: Project[] = [
   {
-    id: 'order-management-system',
-    title: 'Order Management System',
-    tagline: 'High-throughput order processing for e-commerce',
+    id: 'fitness-tips',
+    title: 'Fitness Tech Microservices Platform',
+    tagline: 'High-throughput order ',
     description:
-      'A scalable microservices-based order management system handling 10K+ orders per minute with real-time inventory sync and payment processing.',
+      'A scalable fitness tracking service that enables secure activity logging, personalized workout recommendations, and real-time updates, designed to handle high traffic reliably through asynchronous processing and centralized control.',
     problemStatement:
-      'E-commerce platforms struggle with order consistency during flash sales. Traditional monolithic systems fail under high concurrency, leading to overselling and payment failures.',
+      'Existing fitness platforms face challenges in securely managing user data, scaling with growing activity, and delivering real-time updates and personalized recommendations reliably. A scalable and resilient solution is required to address these limitations while maintaining performance and user experience',
     techStack: [
       {
-        name: 'Java 17',
+        name: 'Java 22',
         category: 'backend',
         reason: 'Virtual threads for handling concurrent order processing efficiently',
       },
@@ -31,14 +31,14 @@ export const projects: Project[] = [
         reason: 'Distributed locking and caching to prevent overselling',
       },
       {
-        name: 'Amazon SQS',
+        name: 'Amazon Kafka',
         category: 'cloud',
         reason: 'Decoupling order creation from downstream processing for reliability',
       },
       {
-        name: 'AWS Lambda',
+        name: 'AWS SNS',
         category: 'cloud',
-        reason: 'Event-driven payment webhook processing without managing servers',
+        reason: 'Event-based pub/sub notifications for fan-out messaging across multiple consumers.',
       },
       {
         name: 'Docker',
@@ -47,14 +47,14 @@ export const projects: Project[] = [
       },
     ],
     architectureDescription:
-      'Event-driven architecture with CQRS pattern. Orders are validated synchronously, then published to SQS for async processing. Redis handles inventory reservation with TTL-based automatic release. Each microservice owns its data and communicates via events.',
+      'Cloud-native microservices architecture with centralized authentication and configuration management. Client requests flow through a unified API gateway that handles routing, security validation, and load balancing. Services register dynamically for discovery and communicate through asynchronous events to ensure loose coupling and scalability. Activity data and notifications are processed in an event-driven manner, while real-time updates are delivered through persistent connections. Each service independently manages its own data to maintain resilience, scalability, and fault isolation.',
     keyDecisions: [
       {
         title: 'CQRS for Order Queries',
         description:
-          'Separated read and write models to optimize query performance without affecting write throughput.',
+          'Separated write models for recording user activities from read models optimized for analytics and dashboard queries, ensuring high write throughput without impacting read performance.',
         tradeoffs:
-          'Added complexity in maintaining eventual consistency between models; mitigated with event sourcing.',
+          'Increased complexity due to eventual consistency between models; mitigated through event-based state updates and replayable activity events.',
       },
       {
         title: 'Redis for Inventory Locking',
@@ -64,18 +64,18 @@ export const projects: Project[] = [
           'Risk of lock expiration during slow payments; implemented reservation extension mechanism.',
       },
       {
-        title: 'SQS over Kafka',
+        title: 'Kafka',
         description:
-          'Chose SQS for simpler operational overhead and AWS-native integration.',
+          'Chose Kafka for simpler operational overhead and AWS-native integration.',
         tradeoffs:
           'Limited replay capability; acceptable for order processing where idempotency handles retries.',
       },
     ],
     performanceMetrics: [
-      { label: 'Throughput', value: '10K+ orders/min', context: 'During load testing' },
-      { label: 'Latency P99', value: '< 200ms', context: 'Order creation API' },
-      { label: 'Availability', value: '99.9%', context: 'Over 6-month period' },
-      { label: 'Cost', value: '$0.02/1K orders', context: 'AWS infrastructure' },
+      // { label: 'Throughput', value: '10K+ orders/min', context: 'During load testing' },
+      // { label: 'Latency P99', value: '< 200ms', context: 'Order creation API' },
+      // { label: 'Availability', value: '99.9%', context: 'Over 6-month period' },
+      // { label: 'Cost', value: '$0.02/1K orders', context: 'AWS infrastructure' },
     ],
     securityFeatures: [
       'JWT-based authentication with refresh token rotation',
@@ -85,19 +85,20 @@ export const projects: Project[] = [
       'Audit logging for all order state changes',
     ],
     outcomes: [
-      'Handled 50K concurrent users during simulated flash sale',
-      'Zero overselling incidents in production',
-      'Reduced order processing time by 60% compared to monolith',
-      'Achieved PCI DSS compliance for payment handling',
+      // 'Handled 50K concurrent users during simulated flash sale',
+      // 'Zero overselling incidents in production',
+      // 'Reduced order processing time by 60% compared to monolith',
+      // 'Achieved PCI DSS compliance for payment handling',
     ],
-    githubUrl: 'https://github.com/nitesh/order-management-system',
-    liveUrl: 'https://oms-demo.nitesh.dev',
+    githubUrl: 'https://github.com/nitesh-narwal/fitness-details',
+    liveUrl: 'https://fittech.niteshh.me',
     featured: true,
     category: 'microservices',
+    image: '/images/projects/Fitness-Tips.png',
   },
   {
     id: 'url-shortener',
-    title: 'Distributed URL Shortener',
+    title: 'Shortly URL Shortener',
     tagline: 'Scalable link management with analytics',
     description:
       'A high-availability URL shortening service handling 100K+ redirects daily with real-time click analytics and custom domain support.',
@@ -130,16 +131,16 @@ export const projects: Project[] = [
         reason: 'Request throttling and API key management',
       },
       {
-        name: 'Kinesis',
+        name: 'SES',
         category: 'cloud',
-        reason: 'Real-time click stream processing for analytics',
+        reason: 'Transactional email delivery for account verification, notifications, and system-generated emails with high deliverability.',
       },
     ],
     architectureDescription:
       'Multi-tier architecture with CloudFront edge caching, ElastiCache for warm data, and DynamoDB for persistence. Snowflake IDs ensure globally unique short codes without coordination. Click events stream through Kinesis for real-time dashboard updates.',
     keyDecisions: [
       {
-        title: 'Snowflake ID Generation',
+        title: 'Time-Based Distributed ID Strategy',
         description:
           'Implemented Twitter Snowflake-inspired IDs for distributed unique code generation.',
         tradeoffs:
@@ -161,10 +162,10 @@ export const projects: Project[] = [
       },
     ],
     performanceMetrics: [
-      { label: 'Redirect Latency', value: '< 30ms', context: 'P95 globally via CloudFront' },
-      { label: 'Daily Redirects', value: '100K+', context: 'Production traffic' },
-      { label: 'Cache Hit Rate', value: '94%', context: 'CloudFront + Redis combined' },
-      { label: 'Monthly Cost', value: '$45', context: 'At current scale' },
+      // { label: 'Redirect Latency', value: '< 30ms', context: 'P95 globally via CloudFront' },
+      // { label: 'Daily Redirects', value: '100K+', context: 'Production traffic' },
+      // { label: 'Cache Hit Rate', value: '94%', context: 'CloudFront + Redis combined' },
+      // { label: 'Monthly Cost', value: '$45', context: 'At current scale' },
     ],
     securityFeatures: [
       'URL validation to prevent malicious redirects',
@@ -173,192 +174,195 @@ export const projects: Project[] = [
       'Click fraud detection using IP fingerprinting',
     ],
     outcomes: [
-      'Reduced redirect latency by 80% with edge caching',
-      'Saved $500/month compared to enterprise solutions',
-      'Onboarded 5 internal marketing teams',
-      'Open-sourced with 200+ GitHub stars',
+      // 'Reduced redirect latency by 80% with edge caching',
+      // 'Saved $500/month compared to enterprise solutions',
+      // 'Onboarded 5 internal marketing teams',
+      // 'Open-sourced with 200+ GitHub stars',
     ],
-    githubUrl: 'https://github.com/nitesh/url-shortener',
-    liveUrl: 'https://short.nitesh.dev',
+    githubUrl: 'https://github.com/nitesh-narwal/shortly-springboot',
+    liveUrl: 'https://shortly.niteshh.me',
     featured: true,
     category: 'cloud-native',
+    image: '/images/projects/Shortly.png',
   },
-  {
-    id: 'real-time-notification',
-    title: 'Real-Time Notification Service',
-    tagline: 'Multi-channel notifications at scale',
-    description:
-      'A unified notification platform delivering 1M+ daily notifications across email, SMS, push, and in-app channels with intelligent batching and user preferences.',
-    problemStatement:
-      'Applications need to notify users across multiple channels but building separate integrations is expensive. Handling user preferences, delivery tracking, and failover adds significant complexity.',
-    techStack: [
-      {
-        name: 'Java 17',
-        category: 'backend',
-        reason: 'CompletableFuture for parallel channel delivery',
-      },
-      {
-        name: 'Spring Boot',
-        category: 'backend',
-        reason: 'Modular channel adapters using Spring profiles',
-      },
-      {
-        name: 'Amazon SES',
-        category: 'cloud',
-        reason: 'Cost-effective email delivery with bounce handling',
-      },
-      {
-        name: 'Amazon SNS',
-        category: 'cloud',
-        reason: 'Fan-out pattern for multi-channel publishing',
-      },
-      {
-        name: 'DynamoDB',
-        category: 'database',
-        reason: 'User preferences with low-latency lookups',
-      },
-      {
-        name: 'WebSocket',
-        category: 'backend',
-        reason: 'Real-time in-app notifications via Spring WebSocket',
-      },
-    ],
-    architectureDescription:
-      'Fan-out architecture using SNS topics per notification type. Lambda functions handle channel-specific delivery with automatic retries. User preferences stored in DynamoDB with caching layer. WebSocket connections managed via API Gateway for in-app notifications.',
-    keyDecisions: [
-      {
-        title: 'SNS Fan-Out Pattern',
-        description:
-          'Single notification triggers parallel delivery to all subscribed channels.',
-        tradeoffs:
-          'Added cost per message; offset by reduced coordination complexity.',
-      },
-      {
-        title: 'Intelligent Batching',
-        description:
-          'Aggregated similar notifications with 5-minute windows to reduce user fatigue.',
-        tradeoffs:
-          'Slight delivery delay; configurable per notification type.',
-      },
-      {
-        title: 'Dead Letter Queues',
-        description:
-          'Failed notifications routed to DLQ for manual review and replay.',
-        tradeoffs:
-          'Requires monitoring; built CloudWatch alarms for DLQ depth.',
-      },
-    ],
-    performanceMetrics: [
-      { label: 'Daily Volume', value: '1M+', context: 'Across all channels' },
-      { label: 'Delivery Rate', value: '99.2%', context: 'First attempt success' },
-      { label: 'Processing Time', value: '< 500ms', context: 'API to channel handoff' },
-      { label: 'Cost/Notification', value: '$0.0001', context: 'Blended across channels' },
-    ],
-    securityFeatures: [
-      'Encryption in transit and at rest',
-      'User consent verification before delivery',
-      'Unsubscribe token in every notification',
-      'PII masking in logs',
-    ],
-    outcomes: [
-      'Consolidated 4 separate notification systems',
-      'Improved email deliverability to 98% (from 87%)',
-      'Reduced notification-related complaints by 40%',
-      'Saved 200+ engineering hours monthly',
-    ],
-    githubUrl: 'https://github.com/nitesh/notification-service',
-    featured: true,
-    category: 'microservices',
-  },
-  {
-    id: 'auth-service',
-    title: 'Enterprise Authentication Service',
-    tagline: 'OAuth 2.0 + JWT authentication platform',
-    description:
-      'A secure, scalable authentication service supporting OAuth 2.0 flows, social login, MFA, and session management for enterprise applications.',
-    problemStatement:
-      'Each application building its own auth increases security risk and development time. A centralized service must be highly available and secure without becoming a bottleneck.',
-    techStack: [
-      {
-        name: 'Spring Security',
-        category: 'backend',
-        reason: 'Battle-tested OAuth 2.0 authorization server',
-      },
-      {
-        name: 'PostgreSQL',
-        category: 'database',
-        reason: 'ACID compliance for user credentials and audit logs',
-      },
-      {
-        name: 'Redis',
-        category: 'database',
-        reason: 'Session storage with automatic expiration',
-      },
-      {
-        name: 'AWS KMS',
-        category: 'cloud',
-        reason: 'Key rotation for JWT signing without downtime',
-      },
-      {
-        name: 'AWS WAF',
-        category: 'cloud',
-        reason: 'Protection against credential stuffing attacks',
-      },
-      {
-        name: 'Secrets Manager',
-        category: 'cloud',
-        reason: 'Secure storage of OAuth client secrets',
-      },
-    ],
-    architectureDescription:
-      'Stateless JWT authentication with Redis-backed session store for refresh tokens. Asymmetric keys stored in KMS with automatic rotation. Rate limiting at WAF level with gradual backoff. Multi-region deployment for disaster recovery.',
-    keyDecisions: [
-      {
-        title: 'JWT with Short Expiry',
-        description:
-          '15-minute access tokens with sliding refresh tokens for security.',
-        tradeoffs:
-          'More frequent token refresh; offset by transparent client-side handling.',
-      },
-      {
-        title: 'Asymmetric JWT Signing',
-        description:
-          'RSA keys allow token verification without sharing secrets.',
-        tradeoffs:
-          'Larger token size; acceptable for enterprise use cases.',
-      },
-      {
-        title: 'Device Fingerprinting',
-        description:
-          'Refresh tokens bound to device fingerprint to prevent theft.',
-        tradeoffs:
-          'Legitimate device changes require re-authentication.',
-      },
-    ],
-    performanceMetrics: [
-      { label: 'Auth Latency', value: '< 50ms', context: 'Token validation P99' },
-      { label: 'Availability', value: '99.99%', context: 'Multi-region deployment' },
-      { label: 'Active Sessions', value: '500K+', context: 'Concurrent users' },
-      { label: 'Security Score', value: 'A+', context: 'Security audit rating' },
-    ],
-    securityFeatures: [
-      'PKCE flow for public clients',
-      'Argon2id password hashing',
-      'Brute force protection with exponential backoff',
-      'TOTP and WebAuthn MFA support',
-      'Comprehensive audit logging',
-      'GDPR-compliant data handling',
-    ],
-    outcomes: [
-      'Onboarded 12 internal applications within 3 months',
-      'Zero security incidents since launch',
-      'Reduced authentication implementation time by 90%',
-      'Passed SOC 2 Type II audit',
-    ],
-    githubUrl: 'https://github.com/nitesh/auth-service',
-    featured: true,
-    category: 'authentication',
-  },
+  // {
+  //   id: 'real-time-notification',
+  //   title: 'Real-Time Notification Service',
+  //   tagline: 'Multi-channel notifications at scale',
+  //   description:
+  //     'A unified notification platform delivering 1M+ daily notifications across email, SMS, push, and in-app channels with intelligent batching and user preferences.',
+  //   problemStatement:
+  //     'Applications need to notify users across multiple channels but building separate integrations is expensive. Handling user preferences, delivery tracking, and failover adds significant complexity.',
+  //   techStack: [
+  //     {
+  //       name: 'Java 17',
+  //       category: 'backend',
+  //       reason: 'CompletableFuture for parallel channel delivery',
+  //     },
+  //     {
+  //       name: 'Spring Boot',
+  //       category: 'backend',
+  //       reason: 'Modular channel adapters using Spring profiles',
+  //     },
+  //     {
+  //       name: 'Amazon SES',
+  //       category: 'cloud',
+  //       reason: 'Cost-effective email delivery with bounce handling',
+  //     },
+  //     {
+  //       name: 'Amazon SNS',
+  //       category: 'cloud',
+  //       reason: 'Fan-out pattern for multi-channel publishing',
+  //     },
+  //     {
+  //       name: 'DynamoDB',
+  //       category: 'database',
+  //       reason: 'User preferences with low-latency lookups',
+  //     },
+  //     {
+  //       name: 'WebSocket',
+  //       category: 'backend',
+  //       reason: 'Real-time in-app notifications via Spring WebSocket',
+  //     },
+  //   ],
+  //   architectureDescription:
+  //     'Fan-out architecture using SNS topics per notification type. Lambda functions handle channel-specific delivery with automatic retries. User preferences stored in DynamoDB with caching layer. WebSocket connections managed via API Gateway for in-app notifications.',
+  //   keyDecisions: [
+  //     {
+  //       title: 'SNS Fan-Out Pattern',
+  //       description:
+  //         'Single notification triggers parallel delivery to all subscribed channels.',
+  //       tradeoffs:
+  //         'Added cost per message; offset by reduced coordination complexity.',
+  //     },
+  //     {
+  //       title: 'Intelligent Batching',
+  //       description:
+  //         'Aggregated similar notifications with 5-minute windows to reduce user fatigue.',
+  //       tradeoffs:
+  //         'Slight delivery delay; configurable per notification type.',
+  //     },
+  //     {
+  //       title: 'Dead Letter Queues',
+  //       description:
+  //         'Failed notifications routed to DLQ for manual review and replay.',
+  //       tradeoffs:
+  //         'Requires monitoring; built CloudWatch alarms for DLQ depth.',
+  //     },
+  //   ],
+  //   performanceMetrics: [
+  //     { label: 'Daily Volume', value: '1M+', context: 'Across all channels' },
+  //     { label: 'Delivery Rate', value: '99.2%', context: 'First attempt success' },
+  //     { label: 'Processing Time', value: '< 500ms', context: 'API to channel handoff' },
+  //     { label: 'Cost/Notification', value: '$0.0001', context: 'Blended across channels' },
+  //   ],
+  //   securityFeatures: [
+  //     'Encryption in transit and at rest',
+  //     'User consent verification before delivery',
+  //     'Unsubscribe token in every notification',
+  //     'PII masking in logs',
+  //   ],
+  //   outcomes: [
+  //     'Consolidated 4 separate notification systems',
+  //     'Improved email deliverability to 98% (from 87%)',
+  //     'Reduced notification-related complaints by 40%',
+  //     'Saved 200+ engineering hours monthly',
+  //   ],
+  //   githubUrl: 'https://github.com/nitesh/notification-service',
+  //   featured: true,
+  //   category: 'microservices',
+  //   image: '/images/projects/notification-service.png',
+  // },
+  // {
+  //   id: 'auth-service',
+  //   title: 'Enterprise Authentication Service',
+  //   tagline: 'OAuth 2.0 + JWT authentication platform',
+  //   description:
+  //     'A secure, scalable authentication service supporting OAuth 2.0 flows, social login, MFA, and session management for enterprise applications.',
+  //   problemStatement:
+  //     'Each application building its own auth increases security risk and development time. A centralized service must be highly available and secure without becoming a bottleneck.',
+  //   techStack: [
+  //     {
+  //       name: 'Spring Security',
+  //       category: 'backend',
+  //       reason: 'Battle-tested OAuth 2.0 authorization server',
+  //     },
+  //     {
+  //       name: 'PostgreSQL',
+  //       category: 'database',
+  //       reason: 'ACID compliance for user credentials and audit logs',
+  //     },
+  //     {
+  //       name: 'Redis',
+  //       category: 'database',
+  //       reason: 'Session storage with automatic expiration',
+  //     },
+  //     {
+  //       name: 'AWS KMS',
+  //       category: 'cloud',
+  //       reason: 'Key rotation for JWT signing without downtime',
+  //     },
+  //     {
+  //       name: 'AWS WAF',
+  //       category: 'cloud',
+  //       reason: 'Protection against credential stuffing attacks',
+  //     },
+  //     {
+  //       name: 'Secrets Manager',
+  //       category: 'cloud',
+  //       reason: 'Secure storage of OAuth client secrets',
+  //     },
+  //   ],
+  //   architectureDescription:
+  //     'Stateless JWT authentication with Redis-backed session store for refresh tokens. Asymmetric keys stored in KMS with automatic rotation. Rate limiting at WAF level with gradual backoff. Multi-region deployment for disaster recovery.',
+  //   keyDecisions: [
+  //     {
+  //       title: 'JWT with Short Expiry',
+  //       description:
+  //         '15-minute access tokens with sliding refresh tokens for security.',
+  //       tradeoffs:
+  //         'More frequent token refresh; offset by transparent client-side handling.',
+  //     },
+  //     {
+  //       title: 'Asymmetric JWT Signing',
+  //       description:
+  //         'RSA keys allow token verification without sharing secrets.',
+  //       tradeoffs:
+  //         'Larger token size; acceptable for enterprise use cases.',
+  //     },
+  //     {
+  //       title: 'Device Fingerprinting',
+  //       description:
+  //         'Refresh tokens bound to device fingerprint to prevent theft.',
+  //       tradeoffs:
+  //         'Legitimate device changes require re-authentication.',
+  //     },
+  //   ],
+  //   performanceMetrics: [
+  //     { label: 'Auth Latency', value: '< 50ms', context: 'Token validation P99' },
+  //     { label: 'Availability', value: '99.99%', context: 'Multi-region deployment' },
+  //     { label: 'Active Sessions', value: '500K+', context: 'Concurrent users' },
+  //     { label: 'Security Score', value: 'A+', context: 'Security audit rating' },
+  //   ],
+  //   securityFeatures: [
+  //     'PKCE flow for public clients',
+  //     'Argon2id password hashing',
+  //     'Brute force protection with exponential backoff',
+  //     'TOTP and WebAuthn MFA support',
+  //     'Comprehensive audit logging',
+  //     'GDPR-compliant data handling',
+  //   ],
+  //   outcomes: [
+  //     'Onboarded 12 internal applications within 3 months',
+  //     'Zero security incidents since launch',
+  //     'Reduced authentication implementation time by 90%',
+  //     'Passed SOC 2 Type II audit',
+  //   ],
+  //   githubUrl: 'https://github.com/nitesh/auth-service',
+  //   featured: true,
+  //   category: 'authentication',
+  //   image: '/images/projects/auth-service.png',
+  // },
   {
     id: 'data-pipeline',
     title: 'Serverless Data Pipeline',
@@ -445,6 +449,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/nitesh/serverless-data-pipeline',
     featured: false,
     category: 'data-processing',
+    image: '/images/projects/data-pipeline.png',
   },
   {
     id: 'api-gateway',
@@ -526,6 +531,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/nitesh/api-gateway',
     featured: false,
     category: 'api-design',
+    image: '/images/projects/api-gateway.png',
   },
 ];
 

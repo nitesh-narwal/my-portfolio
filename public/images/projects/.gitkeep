@@ -1,0 +1,8 @@
+# This file ensures the projects folder is tracked by git
+# Add your project images here:
+# - order-management.png
+# - url-shortener.png
+# - notification-service.png
+# - auth-service.png
+# - data-pipeline.png
+# - api-gateway.png
