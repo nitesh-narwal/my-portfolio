@@ -79,7 +79,7 @@ export const experiences: Experience[] = [
       'Pursued Bachelor\'s degree in Computer Science with focus on distributed systems, algorithms, and software engineering.',
     achievements: [
       {
-        description: 'Completed AWS Certified Developer certification',
+        description: 'Completed Oracle Certified Developer certification',
         impact: 'demonstrating cloud expertise',
       },
       {

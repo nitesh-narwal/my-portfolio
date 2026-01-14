@@ -43,7 +43,7 @@ export default function Hero() {
           <motion.div variants={staggerItem} className="mb-6">
             <span className="inline-flex items-center gap-2 px-4 py-2 text-sm text-foreground-secondary bg-glass border border-glass-border rounded-full">
               <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-              AWS Certified Developer – Associate
+              Oracle Certified Developer – Professional
             </span>
           </motion.div>
 

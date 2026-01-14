@@ -245,14 +245,14 @@ export default function Certifications() {
           </motion.div>
 
           {/* In Progress Note */}
-          <motion.div variants={staggerItem} className="mt-12 text-center">
+          {/* <motion.div variants={staggerItem} className="mt-12 text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-glass border border-glass-border rounded-full">
               <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
               <p className="text-foreground-muted text-sm">
-                Currently preparing for: <span className="text-foreground font-medium">AWS Certified Developer Associate</span>
+                Currently preparing for: <span className="text-foreground font-medium">Oracle Certified Developer Professional</span>
               </p>
             </div>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </div>
     </section>

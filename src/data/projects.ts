@@ -363,176 +363,176 @@ export const projects: Project[] = [
   //   category: 'authentication',
   //   image: '/images/projects/auth-service.png',
   // },
-  {
-    id: 'data-pipeline',
-    title: 'Serverless Data Pipeline',
-    tagline: 'ETL processing at scale with minimal cost',
-    description:
-      'An event-driven data pipeline processing 10GB+ daily from multiple sources with automatic scaling and near-real-time availability.',
-    problemStatement:
-      'Traditional ETL tools are expensive and require dedicated infrastructure. Business teams need fresh data for analytics but overnight batch processing is too slow.',
-    techStack: [
-      {
-        name: 'AWS Lambda',
-        category: 'cloud',
-        reason: 'Pay-per-invocation for unpredictable workloads',
-      },
-      {
-        name: 'AWS Glue',
-        category: 'cloud',
-        reason: 'Managed Spark for heavy transformation jobs',
-      },
-      {
-        name: 'S3',
-        category: 'cloud',
-        reason: 'Cost-effective data lake storage with lifecycle policies',
-      },
-      {
-        name: 'Amazon Athena',
-        category: 'cloud',
-        reason: 'Serverless SQL queries on S3 data',
-      },
-      {
-        name: 'Step Functions',
-        category: 'cloud',
-        reason: 'Orchestration with built-in error handling and retries',
-      },
-      {
-        name: 'EventBridge',
-        category: 'cloud',
-        reason: 'Schedule and event-driven pipeline triggers',
-      },
-    ],
-    architectureDescription:
-      'S3 event-driven architecture with Lambda for lightweight transforms and Glue for heavy lifting. Data organized in S3 using Hive partitioning for query efficiency. Step Functions orchestrate complex workflows with parallel branches and error handling.',
-    keyDecisions: [
-      {
-        title: 'Lambda vs Glue Decision',
-        description:
-          'Lambda for files < 100MB, Glue for larger datasets requiring Spark.',
-        tradeoffs:
-          'Two codebases to maintain; unified with shared transformation logic.',
-      },
-      {
-        title: 'Parquet File Format',
-        description:
-          'Columnar storage for 10x query performance improvement.',
-        tradeoffs:
-          'Write overhead; acceptable for read-heavy analytics workload.',
-      },
-      {
-        title: 'Partition Strategy',
-        description:
-          'Partitioned by date and source for optimal Athena query pruning.',
-        tradeoffs:
-          'Risk of small files; implemented file compaction job.',
-      },
-    ],
-    performanceMetrics: [
-      { label: 'Daily Volume', value: '10GB+', context: 'From 8 data sources' },
-      { label: 'Processing Time', value: '< 15min', context: 'End-to-end latency' },
-      { label: 'Query Performance', value: '< 10s', context: 'Typical Athena query' },
-      { label: 'Monthly Cost', value: '$120', context: 'All AWS services' },
-    ],
-    securityFeatures: [
-      'S3 bucket encryption with customer-managed keys',
-      'VPC endpoints for private data access',
-      'IAM roles with least privilege',
-      'Data masking for PII columns',
-    ],
-    outcomes: [
-      'Reduced data freshness from 24h to 15min',
-      'Saved $2,000/month vs previous ETL tool',
-      'Enabled self-service analytics for business teams',
-      'Processed 3TB during peak month without issues',
-    ],
-    githubUrl: 'https://github.com/nitesh/serverless-data-pipeline',
-    featured: false,
-    category: 'data-processing',
-    image: '/images/projects/data-pipeline.png',
-  },
-  {
-    id: 'api-gateway',
-    title: 'Custom API Gateway',
-    tagline: 'Intelligent request routing and rate limiting',
-    description:
-      'A lightweight API gateway with dynamic routing, rate limiting, request transformation, and observability for microservices architecture.',
-    problemStatement:
-      'Off-the-shelf API gateways add latency and cost. A custom solution provides exactly the features needed while maintaining full control over routing logic.',
-    techStack: [
-      {
-        name: 'Spring Cloud Gateway',
-        category: 'backend',
-        reason: 'Non-blocking I/O for high-throughput routing',
-      },
-      {
-        name: 'Redis',
-        category: 'database',
-        reason: 'Distributed rate limiting with sliding window',
-      },
-      {
-        name: 'Consul',
-        category: 'devops',
-        reason: 'Dynamic service discovery and health checking',
-      },
-      {
-        name: 'Micrometer',
-        category: 'backend',
-        reason: 'Prometheus-compatible metrics export',
-      },
-      {
-        name: 'Resilience4j',
-        category: 'backend',
-        reason: 'Circuit breaker pattern for fault tolerance',
-      },
-    ],
-    architectureDescription:
-      'Reactive gateway built on Spring WebFlux with filter chain for cross-cutting concerns. Service discovery via Consul with health-based routing. Redis-backed rate limiter with configurable policies per API key and endpoint.',
-    keyDecisions: [
-      {
-        title: 'Spring Cloud Gateway vs Nginx',
-        description:
-          'Chose Spring for Java ecosystem integration and custom filter development.',
-        tradeoffs:
-          'Higher memory footprint; acceptable for feature flexibility.',
-      },
-      {
-        title: 'Sliding Window Rate Limiting',
-        description:
-          'Smoother rate limiting than fixed window with Redis sorted sets.',
-        tradeoffs:
-          'More Redis operations; optimized with Lua scripts.',
-      },
-      {
-        title: 'Circuit Breaker per Service',
-        description:
-          'Isolated failure domains to prevent cascade failures.',
-        tradeoffs:
-          'Configuration complexity; centralized in config server.',
-      },
-    ],
-    performanceMetrics: [
-      { label: 'Added Latency', value: '< 5ms', context: 'Gateway overhead P99' },
-      { label: 'Throughput', value: '50K RPS', context: 'Per gateway instance' },
-      { label: 'Memory', value: '256MB', context: 'JVM heap per instance' },
-    ],
-    securityFeatures: [
-      'JWT validation at edge',
-      'Request body validation',
-      'IP whitelisting for admin APIs',
-      'Request/response logging with PII redaction',
-    ],
-    outcomes: [
-      'Reduced downstream service authentication logic',
-      'Centralized rate limiting across 15 microservices',
-      'Improved API documentation with OpenAPI aggregation',
-      'Enabled canary deployments with weighted routing',
-    ],
-    githubUrl: 'https://github.com/nitesh/api-gateway',
-    featured: false,
-    category: 'api-design',
-    image: '/images/projects/api-gateway.png',
-  },
+  // {
+  //   id: 'data-pipeline',
+  //   title: 'Serverless Data Pipeline',
+  //   tagline: 'ETL processing at scale with minimal cost',
+  //   description:
+  //     'An event-driven data pipeline processing 10GB+ daily from multiple sources with automatic scaling and near-real-time availability.',
+  //   problemStatement:
+  //     'Traditional ETL tools are expensive and require dedicated infrastructure. Business teams need fresh data for analytics but overnight batch processing is too slow.',
+  //   techStack: [
+  //     {
+  //       name: 'AWS Lambda',
+  //       category: 'cloud',
+  //       reason: 'Pay-per-invocation for unpredictable workloads',
+  //     },
+  //     {
+  //       name: 'AWS Glue',
+  //       category: 'cloud',
+  //       reason: 'Managed Spark for heavy transformation jobs',
+  //     },
+  //     {
+  //       name: 'S3',
+  //       category: 'cloud',
+  //       reason: 'Cost-effective data lake storage with lifecycle policies',
+  //     },
+  //     {
+  //       name: 'Amazon Athena',
+  //       category: 'cloud',
+  //       reason: 'Serverless SQL queries on S3 data',
+  //     },
+  //     {
+  //       name: 'Step Functions',
+  //       category: 'cloud',
+  //       reason: 'Orchestration with built-in error handling and retries',
+  //     },
+  //     {
+  //       name: 'EventBridge',
+  //       category: 'cloud',
+  //       reason: 'Schedule and event-driven pipeline triggers',
+  //     },
+  //   ],
+  //   architectureDescription:
+  //     'S3 event-driven architecture with Lambda for lightweight transforms and Glue for heavy lifting. Data organized in S3 using Hive partitioning for query efficiency. Step Functions orchestrate complex workflows with parallel branches and error handling.',
+  //   keyDecisions: [
+  //     {
+  //       title: 'Lambda vs Glue Decision',
+  //       description:
+  //         'Lambda for files < 100MB, Glue for larger datasets requiring Spark.',
+  //       tradeoffs:
+  //         'Two codebases to maintain; unified with shared transformation logic.',
+  //     },
+  //     {
+  //       title: 'Parquet File Format',
+  //       description:
+  //         'Columnar storage for 10x query performance improvement.',
+  //       tradeoffs:
+  //         'Write overhead; acceptable for read-heavy analytics workload.',
+  //     },
+  //     {
+  //       title: 'Partition Strategy',
+  //       description:
+  //         'Partitioned by date and source for optimal Athena query pruning.',
+  //       tradeoffs:
+  //         'Risk of small files; implemented file compaction job.',
+  //     },
+  //   ],
+  //   performanceMetrics: [
+  //     { label: 'Daily Volume', value: '10GB+', context: 'From 8 data sources' },
+  //     { label: 'Processing Time', value: '< 15min', context: 'End-to-end latency' },
+  //     { label: 'Query Performance', value: '< 10s', context: 'Typical Athena query' },
+  //     { label: 'Monthly Cost', value: '$120', context: 'All AWS services' },
+  //   ],
+  //   securityFeatures: [
+  //     'S3 bucket encryption with customer-managed keys',
+  //     'VPC endpoints for private data access',
+  //     'IAM roles with least privilege',
+  //     'Data masking for PII columns',
+  //   ],
+  //   outcomes: [
+  //     'Reduced data freshness from 24h to 15min',
+  //     'Saved $2,000/month vs previous ETL tool',
+  //     'Enabled self-service analytics for business teams',
+  //     'Processed 3TB during peak month without issues',
+  //   ],
+  //   githubUrl: 'https://github.com/nitesh/serverless-data-pipeline',
+  //   featured: false,
+  //   category: 'data-processing',
+  //   image: '/images/projects/data-pipeline.png',
+  // },
+  // {
+  //   id: 'api-gateway',
+  //   title: 'Custom API Gateway',
+  //   tagline: 'Intelligent request routing and rate limiting',
+  //   description:
+  //     'A lightweight API gateway with dynamic routing, rate limiting, request transformation, and observability for microservices architecture.',
+  //   problemStatement:
+  //     'Off-the-shelf API gateways add latency and cost. A custom solution provides exactly the features needed while maintaining full control over routing logic.',
+  //   techStack: [
+  //     {
+  //       name: 'Spring Cloud Gateway',
+  //       category: 'backend',
+  //       reason: 'Non-blocking I/O for high-throughput routing',
+  //     },
+  //     {
+  //       name: 'Redis',
+  //       category: 'database',
+  //       reason: 'Distributed rate limiting with sliding window',
+  //     },
+  //     {
+  //       name: 'Consul',
+  //       category: 'devops',
+  //       reason: 'Dynamic service discovery and health checking',
+  //     },
+  //     {
+  //       name: 'Micrometer',
+  //       category: 'backend',
+  //       reason: 'Prometheus-compatible metrics export',
+  //     },
+  //     {
+  //       name: 'Resilience4j',
+  //       category: 'backend',
+  //       reason: 'Circuit breaker pattern for fault tolerance',
+  //     },
+  //   ],
+  //   architectureDescription:
+  //     'Reactive gateway built on Spring WebFlux with filter chain for cross-cutting concerns. Service discovery via Consul with health-based routing. Redis-backed rate limiter with configurable policies per API key and endpoint.',
+  //   keyDecisions: [
+  //     {
+  //       title: 'Spring Cloud Gateway vs Nginx',
+  //       description:
+  //         'Chose Spring for Java ecosystem integration and custom filter development.',
+  //       tradeoffs:
+  //         'Higher memory footprint; acceptable for feature flexibility.',
+  //     },
+  //     {
+  //       title: 'Sliding Window Rate Limiting',
+  //       description:
+  //         'Smoother rate limiting than fixed window with Redis sorted sets.',
+  //       tradeoffs:
+  //         'More Redis operations; optimized with Lua scripts.',
+  //     },
+  //     {
+  //       title: 'Circuit Breaker per Service',
+  //       description:
+  //         'Isolated failure domains to prevent cascade failures.',
+  //       tradeoffs:
+  //         'Configuration complexity; centralized in config server.',
+  //     },
+  //   ],
+  //   performanceMetrics: [
+  //     { label: 'Added Latency', value: '< 5ms', context: 'Gateway overhead P99' },
+  //     { label: 'Throughput', value: '50K RPS', context: 'Per gateway instance' },
+  //     { label: 'Memory', value: '256MB', context: 'JVM heap per instance' },
+  //   ],
+  //   securityFeatures: [
+  //     'JWT validation at edge',
+  //     'Request body validation',
+  //     'IP whitelisting for admin APIs',
+  //     'Request/response logging with PII redaction',
+  //   ],
+  //   outcomes: [
+  //     'Reduced downstream service authentication logic',
+  //     'Centralized rate limiting across 15 microservices',
+  //     'Improved API documentation with OpenAPI aggregation',
+  //     'Enabled canary deployments with weighted routing',
+  //   ],
+  //   githubUrl: 'https://github.com/nitesh/api-gateway',
+  //   featured: false,
+  //   category: 'api-design',
+  //   image: '/images/projects/api-gateway.png',
+  // },
 ];
 
 export const featuredProjects = projects.filter((p) => p.featured);

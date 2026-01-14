@@ -22,7 +22,7 @@ This portfolio is designed with a clear mission: **convert recruiters into inter
 - **Skills** - Grouped with real context (where used, why chosen, problem solved)
 - **Projects** - Full architecture documentation with trade-offs and outcomes
 - **System Design** - Visual diagrams showing scalability thinking
-- **Certifications** - AWS certification with verification
+- **Certifications** - Oracal certification with verification
 - **Experience** - Impact-focused with metrics
 - **Contact** - Premium contact form with availability status
 
